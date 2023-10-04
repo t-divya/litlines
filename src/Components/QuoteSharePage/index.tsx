@@ -13,7 +13,7 @@ const FormatQuoteWrapper = styled.div`
 `;
 
 const QuotedText = styled.div<Props>`
-  background: ${(props) => props.bgColor};
+  background-color: ${(props) => props.bgColor};
   border: 2px solid black;
   margin-right: 10px;
 `;
@@ -21,41 +21,32 @@ const QuotedText = styled.div<Props>`
 const QuoteFormatButtons = styled.div`
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
 `;
 
-const TextButton = styled.button`
-  margin-bottom: 5px;
+const ActionButton = styled.button`
   border: 2px solid black;
   cursor: pointer;
 `;
-const ColorButton = styled.button`
-  margin-bottom: 5px;
-  border: 2px solid black;
-  cursor: pointer;
-`;
-const ForwardButton = styled.button`
-  border: 2px solid black;
-  cursor: pointer;
-`;
+
+const BG_COLOR_LIST = [
+  "white",
+  "red",
+  "orange",
+  "yellow",
+  "green",
+  "cyan",
+  "blue",
+  "purple",
+  "black",
+];
 
 export default function QuoteSharePage() {
-  const bgColorList = [
-    "white",
-    "red",
-    "orange",
-    "yellow",
-    "green",
-    "cyan",
-    "blue",
-    "purple",
-    "black",
-  ];
-
-  const [bgColor, setBgColor] = useState(bgColorList[0]);
+  const [bgColor, setBgColor] = useState(BG_COLOR_LIST[0]);
 
   function handleOnChangeBgColor() {
-    let val = bgColorList.indexOf(bgColor);
-    setBgColor(bgColorList[val + 1]);
+    let val = BG_COLOR_LIST.indexOf(bgColor);
+    setBgColor(BG_COLOR_LIST[(val + 1) % BG_COLOR_LIST.length]);
   }
 
   return (
@@ -66,9 +57,9 @@ export default function QuoteSharePage() {
         work must never be your motive in working.<br></br>~Bhagwat Gita
       </QuotedText>
       <QuoteFormatButtons>
-        <TextButton>text</TextButton>
-        <ColorButton onClick={handleOnChangeBgColor}>color</ColorButton>
-        <ForwardButton>forward</ForwardButton>
+        <ActionButton>text</ActionButton>
+        <ActionButton onClick={handleOnChangeBgColor}>color</ActionButton>
+        <ActionButton>forward</ActionButton>
       </QuoteFormatButtons>
     </FormatQuoteWrapper>
   );

@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { useState } from "react";
 
 import RandomQuote from "../RandomQuote";
 
@@ -11,24 +10,22 @@ const StyledSearchBox = styled.input`
   border-radius: 20px;
 `;
 const SearchBoxWrapper = styled.div`
-display: flex;
-flex-direction:column;
-align-items:center;
-
-`;
-const SearchIconContainer = styled.div`
   display: flex;
+  flex-direction: column;
   align-items: center;
 `;
+// const SearchIconContainer = styled.div`
+//   display: flex;
+//   align-items: center;
+// `;
 
 const RandomQuoteContainer = styled.div`
-margin-top:50px;
-color:white;
-cursor:pointer;
-`
+  margin-top: 50px;
+  color: white;
+  cursor: pointer;
+`;
 
 export default function SearchBox() {
-  const [inputValue, setInputValue] = useState();
   return (
     <SearchBoxWrapper>
       <StyledSearchBox type="text"></StyledSearchBox>
